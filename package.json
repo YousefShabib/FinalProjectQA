@@ -5,8 +5,13 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "gulp": "gulp",
-    "test": "gulp test"
+    "dev": "parcel src/index.html",
+    "build": "parcel build src/index.html",
+    "serve": "parcel serve src/index.html",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "mocha",
+    "gulp": "gulp"
   },
   "repository": {
     "type": "git",
@@ -22,12 +27,13 @@
     "@eslint/js": "^9.26.0",
     "chai": "^5.2.0",
     "cypress": "^14.3.3",
-    "eslint": "^9.26.0",
+    "eslint": "^9.38.0",
     "globals": "^16.1.0",
-    "gulp": "^5.0.0",
+    "gulp": "^5.0.1",
     "gulp-cli": "^3.0.0",
     "gulp-shell": "^0.8.0",
+    "jest": "^30.2.0",
     "mocha": "^11.2.2",
-    "parcel": "^2.14.4"
+    "parcel": "^2.16.0"
   }
 }
