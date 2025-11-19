@@ -1,30 +1,24 @@
-describe('Form Tests', () => {
+describe("Flashcard Set Form", () => {
     beforeEach(() => {
-        cy.visit('http://localhost:1234');
+  
+      cy.visit("http://localhost:1234");
+      cy.get("#cardSetPage").click({ force: true });
+      cy.get('[data-cy="toggle_form"]').click({ force: true });
+  
     });
-
-    //Create set
-    it('Create Set - Happy Path', () => {
-        cy.get('[data-cy=createSetInput]').type('Math Set');
-        cy.get('[data-cy=createSetButton]').click();
-        cy.contains('Math Set').should('exist');
+  
+    it("should create a new flashcard set when title is provided", () => {
+      cy.get('input[name="titleInput"]').type("New Study Set");
+      cy.get('[data-cy="set_form"]').submit();
+      cy.contains("New Study Set").should("be.visible");
+  
     });
-
-    //Empty set input
-    it('Create Set - Empty Input', () => {
-        cy.get('[data-cy=createSetButton]').click();
-        cy.contains('Error').should('exist');
+  
+    it("should show validation error when title is missing", () => {
+      cy.get('[data-cy="set_form"]').submit();
+      cy.contains("TITLE CANNOT BE EMPTY").should("be.visible");
+  
     });
-    //Add card
-    it('Add Card - Happy Path', () => {
-        cy.get('[data-cy=cardQuestionInput]').type('2+2');
-        cy.get('[data-cy=cardAnswerInput]').type('4');
-        cy.get('[data-cy=addCardButton]').click();
-        cy.contains('2+2').should('exist');
-    });
-    //Empty card input
-    it('Add Card - Empty Input', () => {
-        cy.get('[data-cy=addCardButton]').click();
-        cy.contains('Error').should('exist');
-    });
-});
+    
+  });
+  

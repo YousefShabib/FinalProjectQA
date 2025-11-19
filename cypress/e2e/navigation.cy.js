@@ -1,20 +1,26 @@
-describe('Navigation Tests', () => {
+describe("Page Navigation", () => {
     beforeEach(() => {
-        cy.visit('http://localhost:1234');
+      cy.visit("http://localhost:1234");
+  
     });
-
-    it('Navigates to Card Set', () => {
-        cy.get('[data-cy=cardSetNav]').click();
-        cy.url().should('include', '/card-set');
+  
+    it("redirects to the Home section correctly", () => {
+      cy.get('[data-cy="nav-home"]').click({ force: true });
+      cy.contains("A Digital Study Solution for the Modern World").should("be.visible");
+  
     });
-
-    it('Navigates to About', () => {
-        cy.get('[data-cy=aboutNav]').click();
-        cy.url().should('include', '/about');
+  
+    it("displays About section when clicked", () => {
+      cy.get('[data-cy="nav-about"]').click({ force: true });
+      cy.contains("About Study Night").should("be.visible");
+  
     });
-
-    it('Navigates to Home', () => {
-        cy.get('[data-cy=homeNav]').click();
-        cy.url().should('include', '/');
+  
+    it("loads Card Sets section properly", () => {
+      cy.get('[data-cy="nav-cardsets"]').click({ force: true });
+      cy.contains("Study Set Library").should("be.visible");
+      
     });
-});
+  
+  });
+  
